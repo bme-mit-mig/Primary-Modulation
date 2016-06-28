@@ -19,11 +19,11 @@ close all; figure; showCellLocations(modFF, cellLocs);
 winRadius = 6;
 winType = 'cos';
 % precalculating cell masks into a cache
-cache = createCellImCache(size(modFF, 1), cellLocs, winRadius, winType);
+cellWinCache = createCellImCache(size(modFF, 1), cellLocs, winRadius, winType);
 
 % cell-images
-cellImModFF = getCellImCached(cache, modFF);
-cellImModProj = getCellImCached(cache, modProj);
+cellImModFF = getCellImCached(cellWinCache, modFF);
+cellImModProj = getCellImCached(cellWinCache, modProj);
 
 close all;
 figure;imagesc(cellImModFF)
@@ -48,7 +48,7 @@ close all;
 figure; imagesc(cellImScatter);
 
 %% upscaling
-scatter = upSampleInterpol(cellImScatter, cache.cellLocs);
+scatter = upSampleInterpol(cellImScatter, cellWinCache.cellLocs);
 imagesc(scatter)
 
 %% smoothing
@@ -56,11 +56,11 @@ smoothedScatter = imgaussfilt(scatter, 70);
 imagesc(smoothedScatter);
 
 %% how to call it
-scatter = estScatterSSE(modProj, modFF);
+scatter = estScatterSSE(modProj, modFF, cellWinCache);
 imagesc(scatter);
 
 %% executing a cell-image based algorithm for full-scale images
-scatter = runCellImAlg(@estScatterSSEcellIm, modProj, modFF, cache);
+scatter = runCellImAlg(@estScatterSSEcellIm, modProj, modFF, cellWinCache);
 imagesc(scatter);
 
 %% scatter correction
