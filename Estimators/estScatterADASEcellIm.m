@@ -1,5 +1,5 @@
 function scatter = estScatterADASEcellIm(proj, FF, cutOffFreq)
-
+%estScatterADASEcellIm  ADASE algorithm on cell-image
 
 % this is hardcoded!!
 % it works mainly for central projections

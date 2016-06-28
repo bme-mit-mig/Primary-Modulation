@@ -1,5 +1,5 @@
-function scatter = estScatterBDASEcellIm(proj, FF, svf)
-%svf: vagasi frekvenciaja a Gauss szuronek felul/alul ateresztesnel
+function scatter = estScatterBDASEcellIm(proj, FF, cutOffFreq)
+%estScatterBDASEcellIm  BDASE algorithm on cell-image
 
 
 % simulating fix alpha -> new FF
@@ -8,6 +8,6 @@ odd = ones(size(odd)) * mean(odd(~isnan(odd)));
 even = ones(size(even)) * mean(even(~isnan(even)));
 FF = composePModulator(even, odd);
 
-scatter = estScatterADASEcellIm(proj, FF, svf);
+scatter = estScatterADASEcellIm(proj, FF, cutOffFreq);
 
 end

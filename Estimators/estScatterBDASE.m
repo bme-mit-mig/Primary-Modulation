@@ -1,10 +1,11 @@
-function scatter = estScatterBDASE(modProj, modFF, svf)
-%svf: vagasi frekvenciaja a Gauss szuronek felul/alul ateresztesnel
+function scatter = estScatterBDASE(modProj, modFF, cutOffReq)
+%estScatterBDASE BDASE algorithm on full-scale image
+% Basic Demodulation Based Analytical Scatter Estimation
 
-if ~exist('svf', 'var')
-    svf = 0.2;
+if ~exist('cutOffFreq', 'var')
+    cutOffReq = 0.2;
 end
 
-scatter = runCellImAlg(@(proj, ff) estScatterBDASEcellIm(proj, ff, svf), modProj, modFF);
+scatter = runCellImAlg(@(proj, ff) estScatterBDASEcellIm(proj, ff, cutOffReq), modProj, modFF);
 
 end

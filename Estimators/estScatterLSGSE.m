@@ -1,7 +1,12 @@
-function scatter = estScatterLSGSE(modulatedImage, FF, n, r, scatterRange, postSmoothSigma)
+function scatter = estScatterLSGSE(modProj, modFF, numberOfLevels, radiusOfPatch, scatterRange, postSmoothSigma)
+%estScatterLSGSE  LSGSE algorithm - Level Set Based GSE
+% radiusOfPatch:    the radius of the patch for mean absolute gradient
+% calculation
+% scatterRange:     [min, max] possible scatter value
+% postSmoothSigma:  sigma of gaussian filter applied at the end (0: no filtering)
 
-
-[h,w] = size(modulatedImage);
+n = numberOfLevels;
+[h,w] = size(modProj);
 
 a = zeros(h,w);
 
@@ -12,7 +17,7 @@ scatterLevels = linspace(scatterRange(1), scatterRange(2), n);
 f = NaN(1530, 1530, n);
 
 for i = 1:n      
-    a = (modulatedImage - scatterLevels(i)) ./ FF;  % scatter corrected image with the given level
+    a = (modProj - scatterLevels(i)) ./ modFF;  % scatter corrected image with the given level
     dv0 = abs(diff(a, 1, 1));
     dh0 = abs(diff(a, 1, 2));
     dv = zeros(h,w); dh = zeros(h,w);
@@ -21,7 +26,7 @@ for i = 1:n
     dh(:, 1:end-1) = dh(:, 1:end-1) + dh0;
     dh(:, 2:end) = dh(:, 2:end) + dh0;
     d = dv + dh;
-    f(:,:,i) = boxFilterIntegImage(d, r);
+    f(:,:,i) = boxFilterIntegImage(d, radiusOfPatch);
 end
 
 [~, idx] = min(f,[], 3);

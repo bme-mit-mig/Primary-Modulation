@@ -1,5 +1,5 @@
 function scatter = estScatterSSEcellIm(proj, FF)
-%%estScatterSSEcellIm SSE algorithm on cell-images
+%estScatterSSEcellIm SSE algorithm on cell-images
 
 % sigma of gauss
 sigma = 0.9;

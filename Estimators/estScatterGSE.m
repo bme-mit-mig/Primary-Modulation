@@ -1,5 +1,6 @@
 function scatInterp = estScatterGSE(modProj, modFF, scatterRange)
-
+%estScatterGSE  GSE algorithm - Gradient Based Scatter Estimation
+% scatterRange:    [min, max] possible scatter value
 
 [h,w] = size(modFF);
 

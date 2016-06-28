@@ -1,4 +1,5 @@
 function scatter = estScatterSSENPcellIm(proj, FF)
+%estScatterSSENPcellIm SSENP algorithm on cell-image
 
 % calling SSE
 scatter = estScatterSSEcellIm(proj, FF);

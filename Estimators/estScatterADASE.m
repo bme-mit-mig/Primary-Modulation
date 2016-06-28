@@ -1,10 +1,11 @@
-function scatter = estScatterADASE(modProj, modFF, svf)
-%svf: vagasi frekvenciaja a Gauss szuronek felul/alul ateresztesnel
+function scatter = estScatterADASE(modProj, modFF, cutOffFreq)
+%estScatterADASE ADASE algorithm on full-scale image
+% Advanced Demodulation Based Analytical Scatter Estimation
 
-if ~exist('svf', 'var')
-    svf = 0.2;
+if ~exist('cutoffFreq', 'var')
+    cutOffFreq = 0.2;
 end
 
-scatter = runCellImAlg(@(proj, ff) estScatterADASEcellIm(proj, ff, svf), modProj, modFF);
+scatter = runCellImAlg(@(proj, ff) estScatterADASEcellIm(proj, ff, cutOffFreq), modProj, modFF);
 
 end
