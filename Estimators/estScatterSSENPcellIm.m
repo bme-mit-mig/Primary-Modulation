@@ -1,8 +1,10 @@
-function scatter = estScatterSSENPcellIm(image, FF)
+function scatter = estScatterSSENPcellIm(proj, FF)
 
-scatter = estScatterSSEcellIm(image, FF);
+% calling SSE
+scatter = estScatterSSEcellIm(proj, FF);
 
-scatter(isnan(image)) = NaN;
+% replacing outliers
+scatter(isnan(proj)) = NaN;
 scatter = repairScatter(scatter, 0.5);
 
 end

@@ -1,6 +1,7 @@
 function [T]=extrap(I)
-% input: I: N*N-es kep, ahol N paros.
-% output: T: 2N*2N-es kep, ami az I cirkularis extrapolaltja.
+% extrapolation
+% input: I: N*N sized image, N is even.
+% output: T: 2N*2N sized image, circular extrapolation of I
 
 N=size(I,1);
 %1-es kiterjesztett kep eloallitasa:

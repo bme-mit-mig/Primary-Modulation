@@ -1,16 +1,9 @@
-function sample = getCellIm(image, samplingPos, r)
-%getCellIm  creates downsampled modulatorimage, by using a sampling window
-
+function sample = getCellIm(image, cellLocs, winRadius, winType)
+%getCellIm  creates a cell-image from a full scale image
+% winType: hann, rect, disk, cos
 % it is subpixel accurate
-% type of the sampling window is controlled by global parameters
 
-global samplingRadius;
-
-if ~isempty(samplingRadius)
-    r = samplingRadius;
-elseif ~exist('r','var')
-    r = 6;
-end
+r = winRadius;
 
 
    function h = hannWin(p)
@@ -39,15 +32,8 @@ end
         end
     end
 
-global useWinType;
 
-% default is cos
-% if ~exist('useWinType', 'var')
-if isempty(useWinType)
-    useWinType = 'cos';
-end
-
-switch useWinType
+switch winType
     case 'hann'
         win = @hannWin;
     case 'rect'
@@ -81,7 +67,7 @@ else
     threshold = winsum * 0.6;
 end
     
-[h,w] = size(samplingPos.V);
+[h,w] = size(cellLocs.V);
 
 % default value is -1, it represents an unsuccessful sampling
 % sample = zeros(h,w) -1;
@@ -91,7 +77,7 @@ for i = 1:h
     for j = 1:w                
         s = 0;
         sumW = 0;
-        center = [samplingPos.V(i,j), samplingPos.H(i,j)];
+        center = [cellLocs.V(i,j), cellLocs.H(i,j)];
         for y = -r:r
             for x = -r:r
                 p = round(center + [y x]);

@@ -1,22 +1,18 @@
-function scatter = runCellImAlg( alg, image, FF )
+function scatter = runCellImAlg( alg, modProj, modFF, cache )
 %RUNCELLIMALG extract cell images and calls alg with it
 %   It returns with a full scatter image not cell image
+% alg : function handler for the cell-image based scatter estimator
+% image : the modulated image
+% modFF : flood-field image of the modulator
 
-% getting cached mod points from mpGlobal, or find them on FF
-mp = getModPoints(FF);
+cellImModProj = getCellImCached(cache, modProj);
+cellImModFF   = getCellImCached(cache, modFF);
 
-% sampling at modulator cell points
-% sampleImage = getSampleWin(image, mp);
-% sampleFF = getSampleWin(FF, mp);
+% calling alg
+cellImScatter = alg(cellImModProj, cellImModFF);
 
-global cache;
-sampleImage = getCellImCached(cache, image);
-sampleFF = getCellImCached(cache, FF);
-
-
-sampleScatter = alg(sampleImage, sampleFF);
-
-scatter = upSampleInterpol(sampleScatter, mp);
+% recreating a fullscale image
+scatter = upSampleInterpol(cellImScatter, cache.cellLocs);
 
 end
 

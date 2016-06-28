@@ -1,7 +1,7 @@
-function scatInterp = estScatterGSE(image, FF, scatterRange)
+function scatInterp = estScatterGSE(modProj, modFF, scatterRange)
 
 
-[h,w] = size(FF);
+[h,w] = size(modFF);
 
 
 n = 200;
@@ -12,7 +12,7 @@ f = NaN(h,w,n);
     for i = 1:n      
         dv = zeros(1530);
         dh = dv;
-        a = (image - scatterLevels(i)) ./ FF;
+        a = (modProj - scatterLevels(i)) ./ modFF;
         dv(2:end,:) = abs(diff(a, 1, 1));
         dh(:, 2:end) = abs(diff(a, 1, 2));
         d = sqrt(dv.^2+dh.^2);

@@ -1,7 +1,7 @@
-function scatter = estScatterSSE( image, FF )
+function scatter = estScatterSSE( modProj, modFF )
 %ESTSCATTERSSE SSE algorithm
 
-scatter = runCellImAlg(@estScatterSSEcellIm, image, FF);
+scatter = runCellImAlg(@estScatterSSEcellIm, modProj, modFF);
 
 end
 

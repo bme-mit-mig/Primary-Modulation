@@ -1,5 +1,5 @@
 function md = medfilt2NaN( a, r, fillNaNs )
-% itt fills NaNs with median value from the neighbours
+%medfilt2NaN  fills NaNs with median value from the neighbours
 
 d = padarray(a, [r, r], NaN);
 

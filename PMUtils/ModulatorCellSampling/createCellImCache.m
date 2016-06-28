@@ -1,25 +1,8 @@
-function cache = createCellImCache(imsize, samplingPos, r)
-%getSampleWin  creates downsampled modulatorimage, by using a sinus window
+function cache = createCellImCache(imsize, cellLocs, winRadius, winType)
+%createCellImCache  creates cache for faster sampling
 
-% it is subpixel accurate
 
-global samplingRadius;
-
-if ~isempty(samplingRadius)
-    r = samplingRadius;
-elseif ~exist('r','var')
-    r = 6;
-end
-
-    % these functions work in the range -r:r
-%     function h = hannWin(p)
-%         d = norm(p/r);
-%         if (d >= -1 && d <= 1)            
-%             h = sin((d/2+0.5)*pi)^2;
-%         else
-%             h = 0;
-%         end
-%     end
+r = winRadius;
 
    function h = hannWin(p)
         if max(abs(p))/r <= 1     
@@ -47,15 +30,8 @@ end
         end
     end
 
-global useWinType;
 
-% default is cos
-% if ~exist('useWinType', 'var')
-if isempty(useWinType)
-    useWinType = 'cos';
-end
-
-switch useWinType
+switch winType
     case 'hann'
         win = @hannWin;
     case 'rect'
@@ -89,7 +65,7 @@ else
     threshold = winsum * 0.6;
 end
     
-[h,w] = size(samplingPos.V);
+[h,w] = size(cellLocs.V);
 
 % default value is -1, it represents an unsuccessful sampling
 % sample = zeros(h,w) -1;
@@ -99,7 +75,7 @@ for i = 1:h
     for j = 1:w                
         %s = 0;
         sumW = 0;
-        center = [samplingPos.V(i,j), samplingPos.H(i,j)];
+        center = [cellLocs.V(i,j), cellLocs.H(i,j)];
         for y = -r:r
             for x = -r:r
                 p = round(center + [y x]);
@@ -125,5 +101,6 @@ cellCorners(:,:,2:5)=round(cellCorners(:,:,2:5));
 
 cache.weights = weights;
 cache.cellCorners = cellCorners;
+cache.cellLocs = cellLocs;
 end
 

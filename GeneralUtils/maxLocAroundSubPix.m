@@ -1,6 +1,7 @@
 function loc = maxLocAroundSubPix( A, point, searchRadius )
 %maxLocAround finds the location of the maximum around the given point with
 %subpixel resolution. It uses the 3x3 neighbourhood.
+% A       image
 % point   [row, col]
         
         loc = maxLocAround( A, point, searchRadius );

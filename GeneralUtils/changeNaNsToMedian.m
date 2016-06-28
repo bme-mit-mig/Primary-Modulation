@@ -1,5 +1,5 @@
 function corrected = changeNaNsToMedian(im, medianRadius)
-% changes NaNs to median values
+%changeNaNsToMedian changes NaNs to median values
 
 wrongOnes = find(padarray(isnan(im), [1 1] * medianRadius, false));
 padded = padarray(im, [1 1] * medianRadius, NaN);
@@ -14,6 +14,5 @@ for i = wrongOnes'
     corrected(i) = med;
 end
 
-% corrected = crop(corrected, size(im, 1));
 r = medianRadius;
 corrected = corrected(1+r:end-r, 1+r:end-r);

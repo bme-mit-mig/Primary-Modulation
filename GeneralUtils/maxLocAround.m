@@ -1,5 +1,6 @@
 function loc = maxLocAround( A, point, searchRadius )
 %maxLocAround finds the loocation of the maximum around the given point
+% A       image
 % point   [row, col]
         
         max = -inf;
