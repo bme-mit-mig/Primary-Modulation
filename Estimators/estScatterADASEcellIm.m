@@ -3,10 +3,11 @@ function scatter = estScatterADASEcellIm(proj, FF, cutOffFreq)
 
 % this is hardcoded!!
 % it works mainly for central projections
+% does not tolarate NaN-s, so it have to be cropped
 l = 10:81;
 
-
 scatter = NaN(size(FF));
-scatter(l,l) = sest_demod4(proj(l,l), cutOffFreq, FF(l,l), 1);
+N = length(l); 
+scatter(l,l)=scatest2conv(proj(l,l),N*cutOffFreq/3,FF(l,l));
 
 end
