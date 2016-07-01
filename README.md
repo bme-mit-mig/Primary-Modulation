@@ -8,11 +8,8 @@ Department of Measurement and Information Systems
 Medical Imaging Group
 
 SSE   - Simple Scatter Estimation
-
 SSENP - SSE with Nonlinear Postprocessing
-
 BDASE - Basic Demodulation Analytical based Scatter Estimation
-
 ADASE - Advanced Demodulation Analytical based Scatter Estimation
 
 GSE   - Gradient based Scatter Estimation
