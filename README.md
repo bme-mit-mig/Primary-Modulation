@@ -7,16 +7,17 @@ Budapest University of Technology and Economics (BME)
 Department of Measurement and Information Systems
 Medical Imaging Group
 
-SSE   - Simple Scatter Estimation
+contact: aron.horvaath@gmail.com
 
-SSENP - SSE with Nonlinear Postprocessing
+---
 
-BDASE - Basic Demodulation Analytical based Scatter Estimation
+It contains the following algorithms:
 
-ADASE - Advanced Demodulation Analytical based Scatter Estimation
-
-GSE   - Gradient based Scatter Estimation
-
-LSGSE - Leves Set based GSE
+* __SSE__   - Simple Scatter Estimation
+* __SSENP__ - SSE with Nonlinear Postprocessing
+* __BDASE__ - Basic Demodulation Analytical based Scatter Estimation
+* __ADASE__ - Advanced Demodulation Analytical based Scatter Estimation
+* __GSE__   - Gradient based Scatter Estimation
+* __LSGSE__ - Leves Set based GSE
 
 see Examples for details
