@@ -3,8 +3,8 @@ Collection of Primary Modulation based scatter compensation algorithms
 
 Created by Aron Horvath & Daniel Hadhazi
 
-Budapest University of Technology and Economics (BME)
-Department of Measurement and Information Systems
+Budapest University of Technology and Economics (BME)  
+Department of Measurement and Information Systems  
 Medical Imaging Group
 
 contact: aron.horvaath@gmail.com
