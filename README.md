@@ -15,8 +15,8 @@ It contains the following algorithms:
 
 * __SSE__   - Simple Scatter Estimation
 * __SSENP__ - SSE with Nonlinear Postprocessing
-* __BDASE__ - Basic Demodulation Analytical based Scatter Estimation
-* __ADASE__ - Advanced Demodulation Analytical based Scatter Estimation
+* __BDASE__ - Basic Demodulation based Analytic Scatter Estimation
+* __ADASE__ - Advanced Demodulation based Analytic Scatter Estimation
 * __GSE__   - Gradient based Scatter Estimation
 * __LSGSE__ - Leves Set based GSE
 
