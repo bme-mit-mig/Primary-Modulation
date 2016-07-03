@@ -20,6 +20,6 @@ It contains the following algorithms:
 * __GSE__   - Gradient based Scatter Estimation
 * __LSGSE__ - Leves Set based GSE
 
-It is implemented in MATLAB, and requires the Image Processing and the Curve Fitting Toolbox.
+These are implemented in MATLAB, and require the Image Processing and the Curve Fitting Toolboxes.  
 
 see Examples for details
